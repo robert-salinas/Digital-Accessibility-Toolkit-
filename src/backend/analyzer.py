@@ -1,6 +1,6 @@
 import httpx
 from bs4 import BeautifulSoup
-from typing import Dict, List, Any
+from typing import Dict, List, Any, Optional
 from .checks.alt_text import AltTextCheck
 from .checks.language_declared import LanguageDeclaredCheck
 from .checks.heading_hierarchy import HeadingHierarchyCheck
@@ -8,12 +8,18 @@ from .checks.form_labels import FormLabelsCheck
 from .checks.keyboard_nav import KeyboardNavCheck
 
 class AccessibilityAnalyzer:
+    """
+    Clase principal para coordinar el análisis de accesibilidad de un sitio web.
+    """
     def __init__(self, url: str):
-        self.url = url
-        self.soup = None
-        self.html_content = ""
+        self.url: str = url
+        self.soup: Optional[BeautifulSoup] = None
+        self.html_content: str = ""
 
-    async def fetch_content(self):
+    async def fetch_content(self) -> None:
+        """
+        Descarga el contenido HTML de la URL proporcionada.
+        """
         async with httpx.AsyncClient() as client:
             response = await client.get(self.url)
             response.raise_for_status()
@@ -21,10 +27,13 @@ class AccessibilityAnalyzer:
             self.soup = BeautifulSoup(self.html_content, "html.parser")
 
     async def analyze(self) -> Dict[str, Any]:
+        """
+        Ejecuta todos los chequeos de accesibilidad y devuelve los resultados.
+        """
         if not self.soup:
             await self.fetch_content()
 
-        issues = []
+        issues: List[Dict[str, Any]] = []
         
         # Run various checks
         checks = [
@@ -40,9 +49,8 @@ class AccessibilityAnalyzer:
             issues.extend(check_results)
 
         # Simple score calculation (to be improved)
-        total_checks = len(checks)
         failed_checks = len(set(issue["type"] for issue in issues))
-        score = max(0, 100 - (failed_checks * 10))
+        score: float = max(0, 100 - (failed_checks * 10))
 
         return {
             "url": self.url,

@@ -1,5 +1,9 @@
 # 🚀 Digital Accessibility Toolkit (DAT) v0.1.0
 
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![Python 3.11+](https://img.shields.io/badge/python-3.11+-blue.svg)](https://www.python.org/downloads/)
+[![Tests](https://github.com/robert-salinas/Digital-Accessibility-Toolkit-/actions/workflows/tests.yml/badge.svg)](https://github.com/robert-salinas/Digital-Accessibility-Toolkit-/actions)
+
 **Digital Accessibility Toolkit (DAT)** es una herramienta de ingeniería diseñada para auditar, gestionar y optimizar la accesibilidad web mediante la extracción automática de barreras digitales, asegurando que cada sitio sea inclusivo y cumpla con los estándares internacionales WCAG 2.1.
 
 ## ✨ Características
@@ -16,8 +20,8 @@ Para poner en marcha el proyecto en tu entorno local:
 
 ```bash
 # 1. Clonar el repositorio
-git clone https://github.com/robertesteban/Digital-Accessibility-Toolkit.git
-cd Digital-Accessibility-Toolkit
+git clone https://github.com/robert-salinas/Digital-Accessibility-Toolkit-.git
+cd Digital-Accessibility-Toolkit-
 
 # 2. Instalar dependencias en modo editable
 pip install -e .
@@ -41,7 +45,7 @@ uvicorn src.backend.api:app --reload
 - **Consultar Historial:** Accede a `/history` en la API para ver la evolución de los puntajes de accesibilidad.
 - **Exportar Reportes:** Obtén resultados listos para compartir con desarrolladores o stakeholders.
 
-## � Estructura de Decisiones (ADR)
+## 📝 Estructura de Decisiones (ADR)
 
 El proyecto mantiene registros estructurados (Architecture Decision Records) para asegurar el rigor arquitectónico:
 
@@ -54,11 +58,17 @@ El proyecto mantiene registros estructurados (Architecture Decision Records) par
 - **Accepted:** La decisión ha sido aprobada e implementada.
 - **Deprecated:** La decisión ya no es relevante.
 
-## � Documentación Adicional
+## 📖 Documentación Adicional
 
 - [🏛️ Arquitectura y Decisiones de Diseño](docs/ARCHITECTURE.md)
 - [🚀 Historias de Impacto Real](docs/IMPACT.md)
-- [🤝 Guía de Contribución](docs/CONTRIBUTING.md)
+- [🤝 Guía de Contribución](CONTRIBUTING.md)
+- [📘 Ejemplos de Uso](docs/EXAMPLES.md)
+- [🔧 Solución de Problemas](docs/TROUBLESHOOTING.md)
+
+## 📜 Licencia
+
+Este proyecto está bajo la Licencia MIT. Consulta el archivo [LICENSE](LICENSE) para más detalles.
 
 ---
-Desarrollado con ❤️ para ingenieros y organizaciones que buscan elevar la calidad de la inclusión digital mediante el rigor técnico y la empatía.
+Desarrollado con ❤️ por **Robert Salinas** para ingenieros y organizaciones que buscan elevar la calidad de la inclusión digital mediante el rigor técnico y la empatía.
