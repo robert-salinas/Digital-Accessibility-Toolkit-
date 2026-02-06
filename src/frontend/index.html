@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DAT - Digital Accessibility Toolkit</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>Digital Accessibility Toolkit (DAT)</h1>
+        <p>Herramienta de auditoría de accesibilidad para una web más inclusiva en Paraguay y Latinoamérica.</p>
+    </header>
+
+    <main id="app">
+        <section id="audit-form" aria-labelledby="audit-title">
+            <h2 id="audit-title">Auditar un sitio web</h2>
+            <form id="url-form">
+                <div class="form-group">
+                    <label for="url-input">URL del sitio web (ej: https://ejemplo.com):</label>
+                    <input type="url" id="url-input" required placeholder="https://..." aria-required="true">
+                </div>
+                <button type="submit" id="audit-btn">Analizar Sitio</button>
+            </form>
+        </section>
+
+        <section id="results" aria-live="polite" hidden>
+            <h2>Resultados del Análisis</h2>
+            <div id="summary-card" class="card">
+                <p id="score-display">Puntaje: <span id="score-value">--</span>/100</p>
+                <p id="summary-text"></p>
+            </div>
+            
+            <div id="issues-list">
+                <!-- Issues will be injected here -->
+            </div>
+        </section>
+
+        <section id="loading" hidden>
+            <p role="status">Analizando... por favor espera.</p>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 Digital Accessibility Toolkit - Proyecto de Impacto Social</p>
+    </footer>
+
+    <script src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,27 @@
+[project]
+name = "digital-accessibility-toolkit"
+version = "0.1.0"
+description = "A toolkit for digital accessibility audits in Paraguay and Latin America."
+authors = [{ name = "Robert Esteban" }]
+dependencies = [
+    "fastapi",
+    "uvicorn",
+    "beautifulsoup4",
+    "requests",
+    "pydantic",
+    "httpx",
+    "jinja2",
+    "python-multipart",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest",
+    "pytest-asyncio",
+    "black",
+    "isort",
+]
+
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"

@@ -1,0 +1,122 @@
+:root {
+    --primary-color: #005a9c;
+    --bg-color: #ffffff;
+    --text-color: #1a1a1a;
+    --error-color: #d32f2f;
+    --warning-color: #f57c00;
+    --success-color: #388e3c;
+    --border-color: #333333;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6;
+    color: var(--text-color);
+    background-color: var(--bg-color);
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+header {
+    border-bottom: 3px solid var(--primary-color);
+    margin-bottom: 30px;
+    padding-bottom: 10px;
+}
+
+h1, h2 {
+    color: var(--primary-color);
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 8px;
+    font-size: 1.2rem;
+}
+
+input[type="url"] {
+    width: 100%;
+    padding: 12px;
+    font-size: 1.1rem;
+    border: 2px solid var(--border-color);
+    border-radius: 4px;
+}
+
+button {
+    background-color: var(--primary-color);
+    color: white;
+    padding: 15px 30px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+button:hover, button:focus {
+    background-color: #003d6b;
+    outline: 3px solid #ffcc00;
+}
+
+.card {
+    border: 2px solid var(--border-color);
+    padding: 20px;
+    margin-top: 20px;
+    border-radius: 8px;
+}
+
+.issue {
+    margin-bottom: 15px;
+    padding: 15px;
+    border-left: 8px solid;
+}
+
+.issue-CRITICAL {
+    border-left-color: var(--error-color);
+    background-color: #fff5f5;
+}
+
+.issue-WARNING {
+    border-left-color: var(--warning-color);
+    background-color: #fff9f0;
+}
+
+#score-display {
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+footer {
+    margin-top: 50px;
+    font-size: 0.9rem;
+    text-align: center;
+    border-top: 1px solid #ccc;
+    padding-top: 20px;
+}
+
+/* Accessibility: Focus visible */
+:focus {
+    outline: 3px solid #ffcc00;
+    outline-offset: 2px;
+}
+
+/* Skip link (optional but good) */
+.skip-link {
+    position: absolute;
+    top: -40px;
+    left: 0;
+    background: #000;
+    color: white;
+    padding: 8px;
+    z-index: 100;
+}
+
+.skip-link:focus {
+    top: 0;
+}
