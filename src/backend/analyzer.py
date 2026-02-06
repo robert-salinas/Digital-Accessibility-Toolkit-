@@ -7,10 +7,12 @@ from .checks.heading_hierarchy import HeadingHierarchyCheck
 from .checks.form_labels import FormLabelsCheck
 from .checks.keyboard_nav import KeyboardNavCheck
 
+
 class AccessibilityAnalyzer:
     """
     Clase principal para coordinar el análisis de accesibilidad de un sitio web.
     """
+
     def __init__(self, url: str):
         self.url: str = url
         self.soup: Optional[BeautifulSoup] = None
@@ -34,7 +36,7 @@ class AccessibilityAnalyzer:
             await self.fetch_content()
 
         issues: List[Dict[str, Any]] = []
-        
+
         # Run various checks
         checks = [
             AltTextCheck(),
@@ -56,5 +58,5 @@ class AccessibilityAnalyzer:
             "url": self.url,
             "score": score,
             "issues": issues,
-            "raw_html": self.html_content
+            "raw_html": self.html_content,
         }
