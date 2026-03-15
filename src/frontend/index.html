@@ -1,48 +1,185 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es" class="h-full bg-[#1A1F2E]">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DAT - Digital Accessibility Toolkit</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>DAT | Digital Accessibility Toolkit - Dark Engineering</title>
+    <!-- Tailwind CSS via CDN for rapid development -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'rs-dark': '#1A1F2E',
+                        'rs-orange': '#FF7A3D',
+                        'rs-text': '#FFFFFF',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        /* Foco visible AAA */
+        :focus-visible {
+            outline: 3px solid #FF7A3D !important;
+            outline-offset: 2px;
+        }
+        /* Skip link styling */
+        .skip-link {
+            position: absolute;
+            top: -100px;
+            left: 0;
+            background: #FF7A3D;
+            color: #1A1F2E;
+            padding: 1rem;
+            z-index: 100;
+            transition: top 0.2s;
+        }
+        .skip-link:focus {
+            top: 0;
+        }
+        /* Custom scrollbar for Dark Engineering look */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #1A1F2E;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #2D3748;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #FF7A3D;
+        }
+    </style>
 </head>
-<body>
-    <header>
-        <h1>Digital Accessibility Toolkit (DAT)</h1>
-        <p>Herramienta de auditoría de accesibilidad para una web más inclusiva en Paraguay y Latinoamérica.</p>
+<body class="h-full flex flex-col text-rs-text font-sans antialiased">
+
+    <!-- 1. Skip Link (Funcionalidad Obligatoria) -->
+    <a href="#main-content" class="skip-link font-bold focus:outline-none">
+        Saltar al contenido principal
+    </a>
+
+    <!-- 2. Header & Nav -->
+    <header class="border-b border-gray-800 py-6 px-4 md:px-8 bg-rs-dark/95 backdrop-blur sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-4">
+            <div class="flex items-center gap-3">
+                <div class="w-10 h-10 bg-rs-orange rounded flex items-center justify-center font-bold text-rs-dark text-xl" aria-hidden="true">
+                    DAT
+                </div>
+                <div>
+                    <h1 class="text-xl md:text-2xl font-black tracking-tighter uppercase">
+                        Digital Accessibility Toolkit
+                    </h1>
+                    <p class="text-xs text-gray-400 font-mono">v0.1.0 | BY ROBERT SALINAS</p>
+                </div>
+            </div>
+            <nav aria-label="Navegación principal">
+                <ul class="flex gap-6 text-sm font-medium uppercase tracking-widest text-gray-400">
+                    <li><a href="#" class="hover:text-rs-orange transition-colors" aria-current="page">Auditoría</a></li>
+                    <li><a href="#history-section" class="hover:text-rs-orange transition-colors">Historial</a></li>
+                    <li><a href="/docs/ARCHITECTURE.md" class="hover:text-rs-orange transition-colors" target="_blank">Docs</a></li>
+                </ul>
+            </nav>
+        </div>
     </header>
 
-    <main id="app">
-        <section id="audit-form" aria-labelledby="audit-title">
-            <h2 id="audit-title">Auditar un sitio web</h2>
-            <form id="url-form">
-                <div class="form-group">
-                    <label for="url-input">URL del sitio web (ej: https://ejemplo.com):</label>
-                    <input type="url" id="url-input" required placeholder="https://..." aria-required="true">
+    <main id="main-content" class="flex-grow max-w-7xl mx-auto w-full px-4 md:px-8 py-12 focus:outline-none" tabindex="-1">
+        
+        <!-- 3. Smart Input Section -->
+        <section id="audit-section" aria-labelledby="audit-heading" class="mb-16">
+            <div class="text-center mb-12">
+                <h2 id="audit-heading" class="text-3xl md:text-5xl font-black mb-4 uppercase italic tracking-tighter">
+                    Analiza la <span class="text-rs-orange">Barrera Digital</span>
+                </h2>
+                <p class="text-gray-400 max-w-2xl mx-auto text-lg">
+                    Introduce la URL de tu sitio para auditar el cumplimiento de los estándares <span class="font-bold text-white">WCAG 2.1 AAA</span>.
+                </p>
+            </div>
+
+            <form id="url-form" class="max-w-3xl mx-auto relative group">
+                <div class="relative">
+                    <label for="url-input" class="sr-only">URL del sitio web</label>
+                    <input 
+                        type="url" 
+                        id="url-input" 
+                        required 
+                        placeholder="https://tu-sitio-web.com"
+                        class="w-full bg-[#0F172A] border-2 border-gray-800 rounded-xl py-6 px-8 text-xl focus:border-rs-orange focus:ring-0 transition-all placeholder:text-gray-600 outline-none pr-32"
+                        aria-required="true"
+                    >
+                    <button 
+                        type="submit" 
+                        id="audit-btn"
+                        class="absolute right-3 top-3 bottom-3 bg-rs-orange text-rs-dark font-black px-6 rounded-lg uppercase tracking-tighter hover:scale-105 active:scale-95 transition-all focus:outline-none"
+                    >
+                        Auditar
+                    </button>
                 </div>
-                <button type="submit" id="audit-btn">Analizar Sitio</button>
+                <p id="url-error" class="text-red-500 mt-2 text-sm hidden" role="alert"></p>
             </form>
         </section>
 
-        <section id="results" aria-live="polite" hidden>
-            <h2>Resultados del Análisis</h2>
-            <div id="summary-card" class="card">
-                <p id="score-display">Puntaje: <span id="score-value">--</span>/100</p>
-                <p id="summary-text"></p>
+        <!-- 4. Loading State -->
+        <section id="loading" class="hidden py-20 text-center" aria-live="assertive">
+            <div class="inline-block w-12 h-12 border-4 border-rs-orange border-t-transparent rounded-full animate-spin mb-4"></div>
+            <p class="text-xl font-mono uppercase tracking-widest text-rs-orange">Procesando auditoría técnica...</p>
+        </section>
+
+        <!-- 5. Results Panel -->
+        <section id="results" class="hidden space-y-12 animate-in fade-in slide-in-from-bottom-4 duration-500" aria-labelledby="results-heading">
+            <div class="flex flex-col md:flex-row justify-between items-end border-b-2 border-gray-800 pb-6 gap-6">
+                <div>
+                    <h2 id="results-heading" class="text-4xl font-black uppercase tracking-tighter italic">Reporte de Ingeniería</h2>
+                    <p id="target-url" class="text-rs-orange font-mono truncate max-w-md"></p>
+                </div>
+                <div class="bg-[#0F172A] p-4 rounded-xl border border-gray-800 text-center min-w-[140px]">
+                    <span class="block text-xs uppercase tracking-widest text-gray-500 mb-1">Health Score</span>
+                    <span id="score-value" class="text-5xl font-black text-rs-orange">--</span>
+                    <span class="text-gray-500 text-xl">/100</span>
+                </div>
             </div>
-            
-            <div id="issues-list">
-                <!-- Issues will be injected here -->
+
+            <div id="summary-card" class="bg-blue-900/20 border border-blue-800 p-6 rounded-xl">
+                <p id="summary-text" class="text-blue-200 leading-relaxed"></p>
+            </div>
+
+            <!-- Results Grid -->
+            <div id="issues-list" class="grid grid-cols-1 md:grid-cols-2 gap-6" role="list">
+                <!-- Issues cards injected by JS -->
             </div>
         </section>
 
-        <section id="loading" hidden>
-            <p role="status">Analizando... por favor espera.</p>
+        <!-- 6. History Section -->
+        <section id="history-section" class="mt-24 border-t border-gray-800 pt-16" aria-labelledby="history-heading">
+            <h2 id="history-heading" class="text-2xl font-black uppercase tracking-tighter mb-8 italic">Historial de Auditorías</h2>
+            <div id="history-list" class="space-y-4" role="list">
+                <!-- History items injected by JS -->
+                <p class="text-gray-500 italic">Cargando historial...</p>
+            </div>
         </section>
+
     </main>
 
-    <footer>
-        <p>&copy; 2026 Digital Accessibility Toolkit - Proyecto de Impacto Social</p>
+    <!-- 7. Footer -->
+    <footer class="border-t border-gray-800 py-12 px-4 bg-[#0F172A]">
+        <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-8">
+            <div class="text-center md:text-left">
+                <p class="font-bold uppercase tracking-widest text-sm mb-2">Digital Accessibility Toolkit</p>
+                <p class="text-gray-500 text-xs max-w-xs">
+                    Ingeniería de accesibilidad para un impacto social real en Paraguay y Latinoamérica.
+                </p>
+            </div>
+            <div class="flex flex-col items-center md:items-end gap-2">
+                <p class="text-xs text-gray-400 uppercase tracking-widest font-mono">2026 &copy; Robert Salinas</p>
+                <div class="flex gap-4">
+                    <span class="px-2 py-1 bg-green-900/30 text-green-500 text-[10px] font-bold rounded border border-green-800">WCAG 2.1 AAA COMPLIANT</span>
+                    <span class="px-2 py-1 bg-rs-orange/20 text-rs-orange text-[10px] font-bold rounded border border-rs-orange/50">DARK ENGINEERING UI</span>
+                </div>
+            </div>
+        </div>
     </footer>
 
     <script src="app.js"></script>

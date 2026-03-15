@@ -1,74 +1,58 @@
-# 🚀 Digital Accessibility Toolkit (DAT) v0.1.0
+# 🚀 Digital Accessibility Toolkit (DAT) v0.2.0
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Python 3.11+](https://img.shields.io/badge/python-3.11+-blue.svg)](https://www.python.org/downloads/)
-[![Tests](https://github.com/robert-salinas/Digital-Accessibility-Toolkit-/actions/workflows/tests.yml/badge.svg)](https://github.com/robert-salinas/Digital-Accessibility-Toolkit-/actions)
+[![UI: Dark Engineering](https://img.shields.io/badge/UI-Dark%20Engineering-orange.svg)](#-estética-dark-engineering)
 
-**Digital Accessibility Toolkit (DAT)** es una herramienta de ingeniería diseñada para auditar, gestionar y optimizar la accesibilidad web mediante la extracción automática de barreras digitales, asegurando que cada sitio sea inclusivo y cumpla con los estándares internacionales WCAG 2.1.
-
-## ✨ Características
-
-- **🔒 Historial de Auditorías (SQLite):** Cada análisis cuenta con un registro completo de cambios, permitiendo el seguimiento de mejoras y retrocesos en la accesibilidad a lo largo del tiempo.
-- **🧠 Análisis Automático de Accesibilidad:** Detecta automáticamente fallos en la estructura del proyecto (alt-text, jerarquía de encabezados, etiquetas de formularios, etc.) y genera recomendaciones técnicas precisas.
-- **⚡ Motor de Auditoría de Alto Rendimiento:** Basado en parsing semántico del DOM para identificar problemas de contraste, navegación por teclado e idioma en milisegundos.
-- **🛠️ Reportes Inteligentes y Políglotas:** Traduce problemas técnicos complejos en explicaciones claras ("por qué" y "cómo") en múltiples idiomas: Español, Portugués e Inglés.
-- **🌐 Interfaz Accessible-First:** La herramienta misma es un modelo de accesibilidad AAA, diseñada para funcionar perfectamente con lectores de pantalla y navegación exclusiva por teclado.
-
-## 🚀 Instalación Rápida
-
-Para poner en marcha el proyecto en tu entorno local:
-
-```bash
-# 1. Clonar el repositorio
-git clone https://github.com/robert-salinas/Digital-Accessibility-Toolkit-.git
-cd Digital-Accessibility-Toolkit-
-
-# 2. Instalar dependencias en modo editable
-pip install -e .
-```
-
-## 🕹️ Uso Básico
-
-Para gestionar y optimizar la accesibilidad de tus sitios de forma eficiente:
-
-### Inicialización y Servidor
-```bash
-# Iniciar el servidor de la API
-uvicorn src.backend.api:app --reload
-
-# Abrir el frontend accesible
-# Abre src/frontend/index.html en tu navegador favorito
-```
-
-### Gestión de Auditorías
-- **Auditar un sitio:** Pega la URL en la interfaz web para obtener un desglose detallado de los problemas encontrados.
-- **Consultar Historial:** Accede a `/history` en la API para ver la evolución de los puntajes de accesibilidad.
-- **Exportar Reportes:** Obtén resultados listos para compartir con desarrolladores o stakeholders.
-
-## 📝 Estructura de Decisiones (ADR)
-
-El proyecto mantiene registros estructurados (Architecture Decision Records) para asegurar el rigor arquitectónico:
-
-- **[ADR-0001: Accessible-First Design](docs/ADR/0001-why-accessible-first.md):** Justificación del uso de estándares AAA en la propia interfaz de la herramienta.
-- **[ADR-0002: Análisis Semántico con BeautifulSoup](docs/ARCHITECTURE.md):** Racional detrás de la detección automática de barreras sin frameworks pesados.
-- **[ADR-0003: Persistencia en SQLite](docs/ARCHITECTURE.md):** Diseño del sistema de seguimiento histórico para medir impacto social.
-
-**Estados Soportados:**
-- **Proposed:** La decisión está en fase de revisión.
-- **Accepted:** La decisión ha sido aprobada e implementada.
-- **Deprecated:** La decisión ya no es relevante.
-
-## 📖 Documentación Adicional
-
-- [🏛️ Arquitectura y Decisiones de Diseño](docs/ARCHITECTURE.md)
-- [🚀 Historias de Impacto Real](docs/IMPACT.md)
-- [🤝 Guía de Contribución](CONTRIBUTING.md)
-- [📘 Ejemplos de Uso](docs/EXAMPLES.md)
-- [🔧 Solución de Problemas](docs/TROUBLESHOOTING.md)
-
-## 📜 Licencia
-
-Este proyecto está bajo la Licencia MIT. Consulta el archivo [LICENSE](LICENSE) para más detalles.
+**Digital Accessibility Toolkit (DAT)** es una suite de ingeniería de alto rendimiento diseñada para auditar, gestionar y optimizar la accesibilidad web. Utiliza un motor de análisis semántico puro para detectar barreras digitales y asegurar el cumplimiento de los estándares **WCAG 2.1 AAA**.
 
 ---
-Desarrollado con ❤️ por **Robert Salinas** para ingenieros y organizaciones que buscan elevar la calidad de la inclusión digital mediante el rigor técnico y la empatía.
+
+## 🖥️ Interfaz de Escritorio (Native GUI)
+
+A diferencia de las herramientas web convencionales, **DAT** se ejecuta como una aplicación de escritorio nativa, ofreciendo una experiencia de software de ingeniería robusta y profesional.
+
+- **Ventana Independiente:** Ejecución fluida mediante `pywebview`.
+- **Servidor Integrado:** Backend FastAPI que corre en segundo plano de forma automática.
+- **Acceso Directo:** Launcher de un solo clic con creación automática de acceso directo en el escritorio.
+
+## 🛠️ Características Principales
+
+- **🎨 Estética "Dark Engineering":** Interfaz de alto contraste (#1A1F2E, #FFFFFF, #FF7A3D) diseñada para reducir la fatiga visual y maximizar la legibilidad (WCAG AAA).
+- **🔒 Historial de Auditorías (SQLite):** Registro persistente de análisis para trackear la evolución de la accesibilidad.
+- **🧠 Análisis Semántico Puro:** Detección de fallos en DOM (alt-text, jerarquía `H1-H6`, etiquetas de formularios, `tabindex`, etc.).
+- **🌍 Motor Políglota:** Reportes técnicos explicativos en Español, Inglés y Portugués.
+- **⚡ Performance de Ingeniería:** Análisis completo de sitios complejos en milisegundos.
+
+## 🚀 Inicio Rápido (Windows)
+
+La herramienta está optimizada para una experiencia "Zero Configuration" en Windows.
+
+1. **Clonar el repositorio:**
+   ```bash
+   git clone https://github.com/robert-salinas/Digital-Accessibility-Toolkit-.git
+   cd Digital-Accessibility-Toolkit-
+   ```
+
+2. **Lanzar la Aplicación:**
+   Simplemente haz doble clic en el archivo:
+   - 🕹️ **`run_app.bat`**
+
+   *El launcher se encargará de crear el entorno virtual (.venv), instalar las dependencias y abrir la ventana de la aplicación automáticamente.*
+
+## 🕹️ Uso de Ingeniería
+
+- **Auditoría Central:** Pega la URL objetivo en la barra de entrada prominente.
+- **Panel de Resultados:** Cuadrícula de tarjetas con desglose técnico de problemas (Críticos, Advertencias e Info).
+- **Re-auditoría:** Acceso rápido desde el historial lateral para comparar cambios en tiempo real.
+
+## 📝 Arquitectura y Decisiones (ADR)
+
+- **[ADR-0001: Accessible-First Design](docs/ADR/0001-why-accessible-first.md):** Por qué la herramienta debe ser el estándar AAA que audita.
+- **[ADR-0004: Unified GUI Strategy](docs/ARCHITECTURE.md):** Integración de FastAPI + PyWebView para una experiencia MVP profesional.
+
+---
+
+Desarrollado con el rigor técnico de **Robert Salinas** para ingenieros que no comprometen la calidad ni la inclusión digital.
+
+> "La accesibilidad no es una característica, es un derecho fundamental de la arquitectura de software."
